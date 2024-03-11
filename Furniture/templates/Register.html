@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} التسجيل {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center text-center mt-5 mb-5">
+            <div class="col-sm-4 m-4 d-flex align-items-center justify-content-center" style="border-left: 1px rgb(173, 173, 173) solid;">
+                <!--صفحة تسجيل الدخول-->
+                <div class=" row">
+                    <div class="col">
+                        <h3>لديك حساب؟</h3>
+                        <a href="{% url 'Login' %}" class="btn btn-secondary mt-2">سجل دخول</a>
+                    </div>
+                </div>
+            </div>
+            <!--صفحة التسجيل-->
+        <div class="col-sm-4 m-4">
+            <div class="row">
+                    <h3>تسجيل</h3>
+                <div class="col mt-4">
+                    <form action="" method="POST" class="form_group">
+                        {%csrf_token%}
+                        {{registerform.as_p}}
+                        <button type="submit" class="btn btn-secondary ">إنشاء حساب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

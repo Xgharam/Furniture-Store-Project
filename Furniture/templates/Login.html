@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} تسجيل الدخول {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center text-center mt-5 mb-5 p-4">
+        <div class="col-sm-4 m-4 p-3" style="border-left: 1px rgb(173, 173, 173) solid;">
+            <!--صفحة تسجيل الدخول-->
+            <div class="row">
+                    <h3>تسجيل الدخول</h3>
+                <div class="col mt-4">
+                    <form action="" method="POST" class="form_group">
+                        {%csrf_token%}
+                        {{form.as_p}}
+                        <button type="submit" class="btn btn-secondary "> سجل دخول</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 m-4 p-3">
+            <!--صفحة التسجيل-->
+            <div class="row">
+                <div class="col">
+                    <h3>ليس لديك حساب؟</h3>
+                    <p class="mt-4">مرحبا بكم في أثاث. من أجل إجراء عملية الشراء، سوف تحتاج إلى التسجيل. 
+                        سوف تكسب نقاط مكافأة مجانية مع كل عملية شراء.</p>
+                    <a href="{% url 'Register' %}" class="btn btn-secondary mt-2"> سجل </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

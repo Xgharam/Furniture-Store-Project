@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <!--جزء الصوره-->
+    <div class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://quatropi.com/cdn/shop/files/coffee-tables-slider-desktop_1920x750_crop_center.webp?v=1690883244" class="d-block w-100 " style="height: 32rem;" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>نجمع لك أفضل قطع الأثاث المصممة بعناية فائقة لتناسب ذوقك الرفيع</h2>
+            <h5> نحن هنا لنحول منزلك إلى ملاذ يعكس شخصيتك وأسلوبك الفريد. 
+               نحن نفخر بتقديمنا لأثاث عالي الجودة يدوم لسنوات طويلة ونحن نقدم لك تشكيلة واسعة من الأثاث المصمم بأناقة وجودة عالية لتختار منها. سواء كنت تبحث عن أثاث لغرفة المعيشة، أو لغرفة النوم، أو أثاث لمنزلك، فإننا نضمن لك أنك ستجد ما تبحث عنه في متجرنا.
+                استمتع بتجربة تسوق لا مثيل لها معنا، حيث الجودة تلتقي بالأناقة والراحة تلتقي بالتصميم الرائع .</h5>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://quatropi.com/cdn/shop/files/sideboards-slider-desktop_1920x750_crop_center.jpg?v=1707731401" class="d-block w-100" style="height: 32rem;" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+          </div>
+        </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!--جزء الأقسام-->
+     <div class="container mt-5 mb-5">
+      <!--الأقسام-->
+        <div class="row text-center d-flex justify-content-center pt-5 pb-4">
+          <h3 class="mb-5 mt-5" id="Sections"> - الأقسام - </h3>
+          <!--الطاولات-->
+          <div class="col-sm-3">
+            <a href="{% url 'Tables' %}" class="text-decoration-none">
+              <div class="card">
+                <img  src="../static/images/Tables.jpg" alt="الطاولات " title="الطاولات ">
+                <div class="card-body bg-dark">
+                  <p class="card-text text-white">الطاولات </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <!--الكنبات-->
+          <div class="col-sm-3">
+            <a href="{% url 'Sofas' %}" class="text-decoration-none">
+              <div class="card">
+                <img src="../static/images/Sofas.jpg" alt=" الكنبات" title=" الكنبات">
+                  <div class="card-body bg-dark">
+                    <p class="card-text text-white"> الكنبات</p>
+                  </div>
+              </div>
+            </a>
+          </div>
+          <!-- الإضاءات والديكورات -->
+          <div class="col-sm-3">
+            <a href="{% url 'LightingDecor' %}" class="text-decoration-none">
+              <div class="card">
+                <img src="../static/images/Lighting.jpg" alt="الإضاءات والديكورات" title="الإضاءات والديكورات">
+                  <div class="card-body bg-dark">
+                    <p class="card-text text-white"> الإضاءات والديكورات</p>
+                  </div>
+              </div>
+            </a>
+          </div>
+          <!--غرف النوم-->
+          <div class="col-sm-3">
+            <a href="{% url 'Bedrooms' %}" class="text-decoration-none">
+              <div class="card">
+                <img src="../static/images/BedRoom.jpg" alt="غرف النوم" title="غرف النوم">
+                  <div class="card-body bg-dark">
+                    <p class="card-text text-white"> غرف النوم </p>
+                  </div>
+              </div>
+            </a>
+          </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

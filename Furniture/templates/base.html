@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="../static/images/Logo.png" />
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <title>
+      {% block title %}أثاث{% endblock %}
+    </title>
+</head>
+<body dir="rtl">
+  <!-- جزء الهيدر -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(228, 228, 228);">
+      <div class="container-fluid">
+        <!-- لوقو -->
+        <div class="d-flex justify-content-center text-center">
+          <img src="/static/images/Logo.png" alt="Logo" title="Logo" style="width: 100px;">
+        </div>
+        <!-- قائمة الصفحات -->
+        <div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link text-dark fs-5" href="{% url 'index' %}">الصفحة الرئيسية</a></li>
+            <li class="nav-item"><a class="nav-link text-dark fs-5" href="{% url 'Tables' %}">الطاولات </a></li>
+            <li class="nav-item"><a class="nav-link text-dark fs-5" href="{% url 'Sofas' %}">الكنبات</a></li>
+            <li class="nav-item"><a class="nav-link text-dark fs-5" href="{% url 'LightingDecor' %}">الإضاءات والديكورات</a></li>
+            <li class="nav-item"><a class="nav-link text-dark fs-5" href="{% url 'Bedrooms' %}">غرف النوم</a></li>
+          </ul>
+        </div>
+        <!-- ايقونة التسجيل وتسجيل الدحول -->
+        <div class="d-flex justify-content-end">
+          {% if request.user.is_authenticated %}
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><p class="m-3 mt-4">  مرحباً {{ user.username }} </p></li>
+            <li class="nav-item mt-2">
+              <span class="badge rounded-pill badge-notification bg-danger" style="font-size: 10px;position: relative; top: -7px; right: 32px;">{{request.session.countcart}}</span>
+              <a href="#"><i class="bi bi-bag" style="font-size: 38px; color: black; "></i></a>
+            </li>
+            <li class="nav-item dropdown">
+                <ul class="nav nav-pills">
+                   <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-person-circle" style="font-size: 2.4rem;"></i></a>
+                     <ul class="dropdown-menu">
+                   <li>
+                  <form action="{% url 'auth_logout' %}" method="POST">
+                    {%csrf_token%}
+                    <button class="btn btn-link text-decoration-none text-dark mb-2"> تسجيل الخروج <i class="bi bi-box-arrow-left p-1" style="font-size: 1.2rem; color: rgb(228, 63, 63); position: relative; top: 4px;"></i></button>
+                  </form>
+                    </li>
+                    </ul>
+                   </li>
+                 </ul>
+              </li>
+          </ul>
+          {% else %}
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="#"><i class="bi bi-bag" style="font-size: 38px; color: black;"></i></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'Login' %}"><img src="/static/images/user.png" class="mt-2" style="width: 38px; margin-right: 3rem;"></i></a>
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+    </nav>
+</header>
+<!-- المحتوى -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<!-- جزء الفوتر -->
+<footer>
+  <div class="container-fluid text-center" style="background-color: rgb(228, 228, 228);">
+    <div class="row ">
+      <div class="col-sm-3 mt-5">
+          <div class="row">
+              <!-- تابعنا -->
+              <div class="col">
+                  <h4><span class="border-start border-5 border-dark p-1 text-dark">تابعنا</span></h4>
+                  <div class="mt-4 ">
+                      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1 " href="#!" title="X Logo" role="button">{% load bootstrap_icons %}{% bs_icon 'twitter' size='2.5rem' color='black' %}</a>
+                      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" title="Facebook Logo" role="button">{% load bootstrap_icons %}{% bs_icon 'facebook' size='2.5rem' color='black' %}</a>
+                      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" title="Instagram Logo" role="button"><i class="bi bi-instagram" style="font-size: 2.4rem;"></i></a>
+                      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" title="Threads Logo" role="button"><i class="bi bi-threads" style="font-size: 2.4rem;"></i></a>
+                  </div>
+              </div>
+          </div>
+          <!-- التواصل -->
+          <div class="row mt-5">
+              <div class="col">
+                  <h4><span class="border-start border-5 border-dark p-1 text-dark">التواصل</span></h4>
+                  <ul class="list-unstyled fs-5 mt-4">
+                      <li class="p-2">Email@gmail.com  {% load bootstrap_icons %}{% bs_icon 'envelope' size='1.5rem' color='black' %} </li>
+                      <li class="p-2"></i> 555 10 654 123 800 {% load bootstrap_icons %}{% bs_icon 'telephone' size='1.5rem' color='black' %} </li>
+                      <li class="p-2">12 2345678 9665+ {% load bootstrap_icons %}{% bs_icon 'whatsapp' size='1.5rem' color='black' %} </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+        <!-- المدفوعات ونمزيل التطبيق -->
+        <div class="col-sm-6 mt-5">
+            <div class="row mt-5">
+                <div class="col">
+                    <h5>المدفوعات المقبولة :</h5>
+                    <div>
+                        <img src="/static/images/cash.svg" alt="">
+                        <img src="/static/images/card-visa.svg" alt="">
+                        <img src="/static/images/card-mastercard.svg" alt="">
+                        <img src="/static/images/card-mada.svg" alt="">
+                        <img src="/static/images/tabby.svg" alt="">
+                        <img src="/static/images/tamara.svg" alt="">
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col">
+                            <h5>نزل التطبيق :</h5>
+                            <div>
+                                <a href="#"><img src="https://s.gr-assets.com/assets/app/badge-ios-desktop-homepage-6ac7ae16eabce57f6c855361656a7540.svg"  alt=""></a>
+                                <a href="#"><img src="https://s.gr-assets.com/assets/app/badge-android-desktop-home-0f517cbae4d56c88a128d27a7bea1118.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- عنا -->
+        <div class="col-sm-3 mt-5">
+            <h4><span class="border-start border-5 border-dark p-1">عنا</span></h4>
+            <ul class="list-unstyled fs-5 mt-3">
+                <li class="p-1"><a href="#" class="text-decoration-none text-dark">معلومات عنا</a></li>
+                <li class="p-1"><a href="#" class="text-decoration-none text-dark">الدعم / المساعدة</a></li>
+                <li class="p-1"><a href="#" class="text-decoration-none text-dark">الأسئلة الشائعة</a></li>
+                <li class="p-1"><a href="#" class="text-decoration-none text-dark">عملاء</a></li>
+                <li class="p-1"><a href="#" class="text-decoration-none text-dark">سياسة الإرجاع والاسترداد</a></li>
+                <li class="p-1"><a href="#" class="text-decoration-none text-dark">جميع المنتجات والميزات</a></li>
+                <li class="p-1"><a href="#" class="text-decoration-none text-dark">فروعنا</a></li>
+            </ul>
+        </div>
+        <!--الحقوق -->
+        <div  style="background-color: rgb(219, 218, 218);">
+            <ul class="list-inline">
+                <li class="list-inline-item p-3 text-dark"> جميع الحقوق محفوظة &copy;</li>
+                <li class="list-inline-item p-3"><a href="#" class="text-decoration-none text-dark">شروط الاستخدام</a></li>
+                <li class="list-inline-item p-3"><a href="#" class="text-decoration-none text-dark">إشعار الخصوصية</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</footer>
+</body>
+</html>

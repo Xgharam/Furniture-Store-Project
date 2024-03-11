@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} الإضاءات والديكورات{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5 mb-5 pb-2 d-flex justify-content-center text-center">
+        <div class="col">
+            <!-- المنتجات -->
+            <div class="row">
+                {% for item in furniture %}
+                <div class="col-sm-3 mt-5">
+                    <div class="card">
+                        <img src="../static/images/{{ item.image }}">
+                        <div class="card-body">
+                            <h5>{{item.itemsid.name}}</h5>
+                            <p class="text-danger">{{item.price}} ر.س</p>
+                            <a href="{% url 'ShowDetails' id=item.id %}" class="btn btn-secondary">تفاصيل المنتج</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
